@@ -164,7 +164,8 @@ class Embeddings {
     const response = await this.client.embeddings.create({
       model: this.model,
       input: text,
-    });
+      encoding_format: 'float' // Force float format to prevent base64 issues with LM Studio
+    } as any);
     return response.data[0].embedding;
   }
 }
